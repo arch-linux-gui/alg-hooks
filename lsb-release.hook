@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = lsb-release
+
+[Action]
+Description = Updating ALG specific configuration.
+When = PostTransaction
+Exec = /usr/bin/alg-hooks-runner lsb-release

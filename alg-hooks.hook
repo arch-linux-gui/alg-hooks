@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = alg-hooks
+
+[Action]
+Description = Update ALG specific configuration.
+When = PostTransaction
+Exec = /usr/bin/alg-hooks-runner
