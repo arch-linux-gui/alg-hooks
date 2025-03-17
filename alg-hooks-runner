@@ -7,7 +7,10 @@ Lsb_release() {
 
     sed -i $file \
         -e 's|^DISTRIB_ID=.*$|DISTRIB_ID=alg|' \
-        -e 's|^DISTRIB_DESCRIPTION=.*$|DISTRIB_DESCRIPTION=\"ALG\"|'
+        -e "s|^DISTRIB_CODENAME=.*|DISTRIB_CODENAME=rolling|" \
+        -e 's|^DISTRIB_DESCRIPTION=.*$|DISTRIB_DESCRIPTION=\"ALG\"|' \
+        -e "s|^DISTRIB_RELEASE=\"\(.*\)\"|DISTRIB_RELEASE=rolling|" \
+        -e 's|^LSB_VERSION=.*$|LSB_VERSION=2.0|'
 }
 
 Os_release() {
