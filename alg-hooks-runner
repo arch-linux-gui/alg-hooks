@@ -5,6 +5,15 @@
 Lsb_release() {
     local file=/etc/lsb-release
 
+    if [ -z "$(grep "^DISTRIB_CODENAME=" $file)" ] ; then
+        # add missing DISTRIB_CODENAME=
+        echo "DISTRIB_CODENAME=rolling" >> $file
+    fi
+    if [ -z "$(grep "^LSB_VERSION=" $file)" ] ; then
+        # add missing LSB_VERSION=
+        echo "LSB_VERSION=2.0" >> $file
+    fi
+
     sed -i $file \
         -e 's|^DISTRIB_ID=.*$|DISTRIB_ID=alg|' \
         -e "s|^DISTRIB_CODENAME=.*|DISTRIB_CODENAME=rolling|" \
